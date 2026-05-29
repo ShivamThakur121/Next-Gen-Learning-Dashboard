@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-background-dark: #07090e;
+  --color-panel-dark: #0d111b;
+  --color-border-dark: #1f2638;
+  --color-border-glow: #3b82f6;
+  
+  --color-accent-purple: #c084fc;
+  --color-accent-emerald: #34d399;
+  --color-accent-blue: #60a5fa;
+  --color-accent-pink: #f472b6;
+  
+  --color-glow-purple: rgba(192, 132, 252, 0.15);
+  --color-glow-emerald: rgba(52, 211, 153, 0.15);
+  --color-glow-blue: rgba(96, 165, 250, 0.15);
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #07090e;
+  --foreground: #f1f5f9;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07090e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f2638;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* Bento dots background pattern */
+.bento-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Mesh gradient card background */
+.mesh-gradient-purple {
+  background-image: radial-gradient(at 10% 20%, rgba(192, 132, 252, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 90% 80%, rgba(96, 165, 250, 0.05) 0px, transparent 50%);
+}
+
+.mesh-gradient-emerald {
+  background-image: radial-gradient(at 10% 20%, rgba(52, 211, 153, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 90% 80%, rgba(96, 165, 250, 0.05) 0px, transparent 50%);
+}
+
+.mesh-gradient-blue {
+  background-image: radial-gradient(at 10% 20%, rgba(96, 165, 250, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 90% 80%, rgba(192, 132, 252, 0.05) 0px, transparent 50%);
+}
+
+.mesh-gradient-pink {
+  background-image: radial-gradient(at 10% 20%, rgba(244, 114, 182, 0.08) 0px, transparent 50%),
+                    radial-gradient(at 90% 80%, rgba(192, 132, 252, 0.05) 0px, transparent 50%);
+}
+
+/* Custom Glassmorphism style */
+.glass-panel {
+  background: rgba(13, 17, 27, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Card Glow Hover Glow Container */
+.card-glow-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.card-glow-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  padding: 1.5px;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.card-glow-wrapper:hover::before {
+  background: linear-gradient(to bottom right, rgba(96, 165, 250, 0.4), rgba(192, 132, 252, 0.4));
 }
