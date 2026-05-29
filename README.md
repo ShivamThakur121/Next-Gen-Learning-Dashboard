@@ -3,6 +3,9 @@
 Welcome to **Aura Learning**, a futuristic, dark-themed, highly-animated student progress center built with **Next.js 15 (App Router)**, **Framer Motion**, and **Supabase Postgres**.
 
 ---
+🌐 Live Demo
+
+👉 https://nextgenlearningdashboard.vercel.app
 
 ## 🎨 Key Architectural & Design Decisions
 
